@@ -2,14 +2,40 @@ var express = require('express'),
     app     = express(),
     mongoose= require('mongoose')
     
-mongoose.connect('mongodb://localhost/b2better');
+    
+//REQUIRE ROUTES
+var adminRoutes       = require('./routes/admin'),
+    categoryRoutes    = require('./routes/categories'),
+    subCategoryRoutes = require('./routes/sub_categories')
+    
+    
+//APP SETUP
+mongoose.connect("mongodb://localhost/b2better"); 
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+
+//Put data into the Database
+var seedDB = require('./seed');
+seedDB();
+
+
+//ACTIVATE ROUTES
+app.use(adminRoutes);
+app.use(categoryRoutes);
+app.use(subCategoryRoutes);
+
 
 
 app.get('/', function(req, res) {
    res.render('home'); 
 });
 
-app.listen(process.env.PORT, process.env.IP, function(req,res) {
+
+
+
+
+
+
+app.listen(process.env.PORT, process.env.IP, function() {
    console.log("B2Better server started!"); 
 });
