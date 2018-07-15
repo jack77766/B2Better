@@ -10,7 +10,8 @@ var adminRoutes       = require('./routes/admin'),
     
     
 //APP SETUP
-mongoose.connect("mongodb://localhost/b2better"); 
+var DATABASEURL = (process.env.DATABASEURL || "mongodb://localhost/b2better");
+mongoose.connect(DATABASEURL); 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 

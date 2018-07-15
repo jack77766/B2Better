@@ -1,9 +1,18 @@
 <% include ./partials/header %>
     
     
+    <% subCats.forEach(function(subCat) { %>
+        <a href='<%=category%>/<%= subCat.name %>'><h2><%= subCat.name %></h2></a>
+    <% }) %>
     
     <% products.forEach(function(product){ %>
-        <h5><%= product.name %></h5>
+        <div class="ui card">
+          <div class="content">
+            <div class="header"><a><%= product.name %></a></div>
+          </div>
+          <div class="content">$<%= product.price %></div>
+          <div class='summary'><%= product.description %></div>
+              
     <% }) %>
     
     
