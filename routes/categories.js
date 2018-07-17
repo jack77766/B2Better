@@ -15,6 +15,10 @@ router.get('/:category', function(req,res) {
     Category.findOne({name: reqCat}, function(err, foundCategory) {
         if(err)
           console.log(err);
+        else if(foundCategory == null) {
+            console.log(req.params.category + " does not exist");
+            res.redirect('back');
+        }
         else {
             SubCategory.find({'parent.name': foundCategory.name}, function(err, foundSubCats) {
                 if(err){

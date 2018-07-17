@@ -1,42 +1,46 @@
 <html >
     <head>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css">
-        <link rel="icon" type="image/png" href="images/favicon.ico">
+        <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css">
+        <link rel="stylesheet" type="text/css"  href="/stylesheets/app.css">
+        <link rel="icon"       type="image/png" href="images/favicon.ico">
     </head>
     
     <body>
         
     <div class="ui inverted teal menu">
-      <div class="header item">B2Better</div>
-      <a class="item">About Us</a>
-      
       <div class="right menu">
         <a class="ui item">Sign In</a>
         <a class="ui item">Login</a>
         <a class="ui item">Logout</a>
       </div>
-    
     </div>
      
     
     
     <div class='ui grid'>
+
         <div class='row'>
             <div class='four wide column'>
-                <div class="ui inverted large teal vertical menu">
+                <div class="ui visible sidebar teal inverted vertical menu">
+                    <div class="header item"><a href='/'>B2Better</a></div>
                     <div class="item">
-                        <div class="header">Categories</div>
-                        <div class="menu">
-                    
-                          <a class="item" href="/men's">Men's</a>
-                          <a class="item" href="/women's">Women's</a>
-                          <a class="item" href="/children's">Children's</a>
-                          <a class="item" href="/baby's">Baby's</a>
-                        </div>
+                        <%  for(var cat in allCats) { %>
+                                <a class='header' href="/<%= cat %>" ><%= cat %></a>
+                                <div class="menu">
+                                <ul>
+                                    <% for(var subCat in cat) { %>
+                                        <% if(typeof allCats[cat][subCat] !== 'undefined') { %>
+                                            <li><a class="item" href="/<%= cat %>/<%= allCats[cat][subCat] %>" ><%= allCats[cat][subCat] %></a></li>
+                                        <% } %>
+                                    <% } %>
+                                </ul>
+                                </div>
+                        <% } %>
                     </div>
-                </div>            
+                    <a class="item">About Us</a>
+                </div>
             </div>  <!--four wide column-->
-          <div class='twelve wide column'>
+            <div class='twelve wide column'>
             
             
           

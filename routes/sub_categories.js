@@ -28,7 +28,7 @@ router.get('/:category/:sub_category', function(req,res){
                             if(err) 
                                 console.log(err);
                             else {
-                                res.render('sub_category', {products: foundProducts});
+                                res.render('sub_category', {sub_category: foundSubCategory.name, products: foundProducts});
                             }
                             
                         });

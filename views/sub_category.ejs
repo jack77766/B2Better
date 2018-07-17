@@ -1,13 +1,9 @@
-<% include ./partials/header %>
+<% include ./partials/header.ejs %>
 
-
-
+<h1 class='title-format'><%= sub_category %></h1>
 
 <% products.forEach(function(product){ %>
-        <h5><%= product.name %></h5>
-    <% }) %>
+        <h5 class='title-format'><%= product.name %></h5>
+<% }) %>
 
-
-
-
-<% include ./partials/footer %>
+<% include ./partials/footer.ejs %>
