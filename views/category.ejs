@@ -1,7 +1,7 @@
 <% include ./partials/header.ejs %>
     
     <h1 class='title-format'><%= category %></h1>
-    <div class="ui equal width grid">
+    <div class="ui equal width stackable center aligned grid">
         <% subCats.forEach(function(subCat) { %>
             <div class="column">
                 <a href='<%=category%>/<%= subCat.name %>'><h2 class='inline'><%= subCat.name %></h2></a>
@@ -9,7 +9,7 @@
         <% }) %>
     </div>
 
-    <div class="ui three column grid">
+    <div class="ui stackable three column center aligned grid">
         <% products.forEach(function(product){ %>
             <div class="column">
                 <div class="ui card">

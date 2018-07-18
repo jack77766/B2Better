@@ -11,7 +11,7 @@ var Category    = require('../models/category'),
     
 //GET CATEGORY PAGE
 router.get('/:category', function(req,res) {
-    var reqCat = new RegExp('^'+req.params.category+'$', "i");
+    var reqCat = new RegExp(req.params.category, "i");
     Category.findOne({name: reqCat}, function(err, foundCategory) {
         if(err)
           console.log(err);

@@ -3,3 +3,7 @@
     margin: 25px auto;
 }
 
+.ui.vertical.menu {
+    max-width: 20%;
+    min-width: 150px;
+}

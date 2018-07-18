@@ -8,8 +8,8 @@ var Category    = require('../models/category'),
 
 //GET A SUBCATEGORY PAGE
 router.get('/:category/:sub_category', function(req,res){
-    let reqCat    = new RegExp('^'+req.params.category     +'$', "i");
-    let reqSubCat = new RegExp('^'+req.params.sub_category +'$', "i");
+    let reqCat    = new RegExp(req.params.category    , "i");
+    let reqSubCat = new RegExp(req.params.sub_category, "i");
     
     Category.findOne({name: reqCat }, function(err, foundCategory) {
         if(err)

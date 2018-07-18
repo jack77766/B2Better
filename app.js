@@ -40,10 +40,6 @@ app.use(async function(req, res, next) {
 async function getCats() {
     try {
         let foundCategories = await Category.find({}, '-_id name');
-        // let catNames = [];
-        // foundCategories.forEach(function(cat) {
-        //     catNames.push(cat.name);
-        // });
         return foundCategories;
     }
     catch(err) {
@@ -68,6 +64,8 @@ async function getAllCats(){
     try {
         let subCats = await SubCategory.find({},  '-_id name parent.name', {lean:true});
         let allCats = {};
+        //Fill allCats with all categories & sub-categories
+        //in key:[value1, value2,...] form for easy processing in Views
         for(const subCat of subCats) {
             var cat = subCat.parent.name;
             var sub = subCat.name;
