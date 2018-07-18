@@ -1,9 +1,17 @@
 <% include ./partials/header.ejs %>
 
-<h1 class='title-format'><%= sub_category %></h1>
-
-<% products.forEach(function(product){ %>
-        <h5 class='title-format'><%= product.name %></h5>
-<% }) %>
+<div class="ui stackable three column center aligned grid">
+        <% products.forEach(function(product){ %>
+            <div class="column">
+                <div class="ui card">
+                      <div class="content">
+                         <div class="header"><a><%= product.name %></a></div>
+                      </div>
+                      <div class="content">$<%= product.price %></div>
+                      <div class='summary'><%= product.description %></div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
 
 <% include ./partials/footer.ejs %>
