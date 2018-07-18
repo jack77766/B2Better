@@ -59,7 +59,6 @@ async function addSubs(){
 
 async function addProducts(){
     try {
-        
         for(const product of products) {
             let foundCategory    = await Category.findOne({name: product.category});
             let foundSubCategory = await SubCategory.findOne({name: product.sub_category});
@@ -89,8 +88,9 @@ async function addProducts(){
 
 
 async function seedDB(){
-    await Category.remove({});
+    await Product.remove({});
     await SubCategory.remove({});
+    await Category.remove({});
     await addCats();
     await addSubs();
     await addProducts();

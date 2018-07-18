@@ -1,6 +1,8 @@
 var express = require('express'),
     app     = express(),
-    mongoose= require('mongoose')
+    mongoose= require('mongoose'),
+    methodOverride = require('method-override'),
+    bodyParser = require('body-parser');
     
     
 //REQUIRE ROUTES
@@ -18,61 +20,37 @@ var Category    = require('./models/category'),
 var DATABASEURL = (process.env.DATABASEURL || "mongodb://localhost/b2better");
 mongoose.connect(DATABASEURL); 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 
 
 app.use(async function(req, res, next) {
   try {
-    let cats    = await getCats();
-    let subCats = await getSubCats();
-    let allCats = await getAllCats();
-    res.locals.categories    = cats;
-    res.locals.subCategories = subCats;
-    res.locals.allCats       = allCats;
+    res.locals.allCats = await getAllCats();
     next();
   } catch (err) {
+        console.log(err);
         next(err);
   }
 });
 
 
-async function getCats() {
-    try {
-        let foundCategories = await Category.find({}, '-_id name');
-        return foundCategories;
-    }
-    catch(err) {
-        console.log(err);
-        return null;
-    }
-    
-}
-
-async function getSubCats() {
-    try {
-        let subCats = await SubCategory.find({},  '-_id name parent.name', {lean:true});
-        return subCats;
-    }
-    catch(err) {
-        console.log(err);
-        return null;
-    }
-}
 
 async function getAllCats(){
     try {
+        let cats    = await Category.find({}, '-_id name', {lean:true});
         let subCats = await SubCategory.find({},  '-_id name parent.name', {lean:true});
         let allCats = {};
         //Fill allCats with all categories & sub-categories
         //in key:[value1, value2,...] form for easy processing in Views
+        for(const cat of cats) {
+            allCats[cat.name] = new Array();
+        }
         for(const subCat of subCats) {
             var cat = subCat.parent.name;
             var sub = subCat.name;
-            if(!allCats.hasOwnProperty(cat)) {
-                allCats[cat] = new Array();
-                
-            }
             allCats[cat].push(sub);
         }
         return allCats;

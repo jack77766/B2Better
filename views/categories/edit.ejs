@@ -1,0 +1,16 @@
+<% include ../partials/header.ejs %>
+
+<h1>Welcome to the edit category page!!!</h1>
+
+<form action='/<%= category %>?_method=PUT' method='POST'>
+    <label>Change category <%= category %> to:</label>
+    <input type='text' name='category'>
+    <button type='submit'>Submit</button>
+</form>
+<h1>OR</h1>
+<h3>Delete it</h3>
+<form action='/<%=category%>?_method=DELETE' method='POST'>
+    <button type='submit'>DELETE</button>
+</form>
+
+<% include ../partials/footer.ejs %>

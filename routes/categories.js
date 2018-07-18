@@ -30,6 +30,26 @@ async function getData(categoryName){
 }
 
 
+//CREATE A NEW CATEGORY FORM
+router.get('/new', function(req,res) {
+    res.render('categories/new');
+});
+
+
+//CREATE A NEW CATEGORY ROUTE
+router.post('/', function(req,res) {
+    let newName = req.body.category;
+    Category.create({name: newName}, function(err, createdCat) {
+        if(err)
+            console.log(err);
+        else {
+            console.log("Created category: " + createdCat);
+        }
+    }); 
+    res.redirect('/' + newName);
+});
+
+
 //GET CATEGORY PAGE
 router.get('/:category', async(req,res) => {
     let reqCat = new RegExp(req.params.category, "i");
@@ -41,6 +61,60 @@ router.get('/:category', async(req,res) => {
         res.render('category', data);
     }
 });
+
+
+//EDIT CATEGORY FORM
+router.get('/:category/edit', function(req, res) {
+    res.render('categories/edit', {category:req.params.category}); 
+});
+
+
+
+//UPDATE CATEGORY ROUTE
+router.put('/:category', function(req, res) {
+    let oldName = req.params.category;
+    let newName = req.body.category;
+    Category.findOneAndUpdate({'name':oldName}, {'name':newName}, function(err){
+        if(err) {
+            console.log(err);
+            res.redirect('back')
+        }
+    }) ;
+    SubCategory.update({'parent.name': oldName}, {'parent.name': newName}, {multi:true}, function(err){
+        if(err) {
+            console.log(err);
+            res.redirect('back');
+        }
+    });
+    Product.update({'category.name': oldName}, {'category.name': newName}, {multi:true}, function(err){
+       if(err) {
+           console.log(err);
+           res.redirect('back')
+       } 
+    });
+    res.redirect('/'+ newName);
+});
+
+
+//DELETE CATEGORY
+router.delete('/:category', function(req,res) {
+    let cat = req.params.category;
+    //Remove all products in the category
+    Product.remove({'category.name': cat}, function(err) {
+        if(err) console.log(err);
+    })
+    //Remove all SubCategories in the category
+    SubCategory.remove({'parent.name': cat}, function(err){
+        if(err) console.log(err);
+    })
+    //Remove Category
+    Category.findOneAndDelete({'name': cat}, function(err){
+        if(err) console.log(err);
+    })
+    res.redirect('/');
+});
+
+
 
 
 
