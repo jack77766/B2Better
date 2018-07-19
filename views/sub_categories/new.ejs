@@ -1,0 +1,13 @@
+<% include ../partials/header.ejs %>
+
+<h1>Add a new sub-category</h1>
+
+<form action='/<%= category %>/' method='POST'>
+    <label>Add a new Sub-Category</label>
+    <input type='text' name='sub_category'>
+    <button type='submit'>Submit</button>
+</form>
+
+
+
+<% include ../partials/footer.ejs %>

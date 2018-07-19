@@ -53,7 +53,7 @@ router.post('/', function(req,res) {
 //GET CATEGORY PAGE
 router.get('/:category', async(req,res) => {
     let reqCat = new RegExp(req.params.category, "i");
-    let data = await getData(reqCat);
+    let data   = await getData(reqCat);
     if(data == null) {
         res.redirect('back')
     }
