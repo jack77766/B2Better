@@ -19,7 +19,7 @@ async function getData(category, subCategory) {
     }
     //GET ALL THE PRODUCTS THAT BELONG TO THE CATEGORY/SUBCATEGORY AND RETURN THEM
     let foundProducts = await Product.find({'category.id': foundCategory.id, 'sub_category.id': foundSubCategory.id});
-    return ({sub_category: foundSubCategory.name, products: foundProducts}); 
+    return ({category:foundCategory.name, sub_category: foundSubCategory.name, products: foundProducts}); 
     
 }
 
@@ -34,18 +34,15 @@ router.get('/:category/new', function(req, res) {
 //CREATE A NEW SUBCATEGORY
 router.post('/:category/', function(req,res) {
    let cat = req.params.category;
-   console.log("Cat: "  + cat);
    let subCat = req.body.sub_category;
    //FIND THE CATEGORY THIS SUBCATEGORY SHOULD BELONG TO
    Category.findOne({name:cat}, '_id name', function(err, parentCat){
           if(err) console.log(err);
           else {
-              console.log("Parent: " + parentCat);
               //ADD THE NEW SUBCATEGORY
               SubCategory.create({name:subCat, parent:{id:parentCat._id, name:parentCat.name}}, function(err, createdSubCat) {
                  if(err) console.log(err);
                  else {
-                     console.log("Succesfully created subcat: " + createdSubCat);
                      res.redirect('/' + cat + '/' + subCat);
                  }
               });

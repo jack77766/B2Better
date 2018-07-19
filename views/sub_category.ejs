@@ -5,7 +5,10 @@
             <div class="column">
                 <div class="ui card">
                       <div class="content">
-                         <div class="header"><a><%= product.name %></a></div>
+                         <div class="header">
+                             <a href='/<%=product.category.name%>/<%=product.sub_category.name%>/<%=product._id%>'>
+                                        <%=product.name %></a>
+                         </div>
                       </div>
                       <div class="content">$<%= product.price %></div>
                       <div class='summary'><%= product.description %></div>

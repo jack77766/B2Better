@@ -1,0 +1,13 @@
+<% include ../partials/header.ejs %>
+
+<div class='container'>
+        <div class="ui card">
+              <div class="content">
+                 <div class="header"><a><%= product.name %></a></div>
+              </div>
+              <div class="content">$<%= product.price %></div>
+              <div class='summary'><%= product.description %></div>
+        </div>
+</div>
+
+<% include ../partials/footer.ejs %>

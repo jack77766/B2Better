@@ -9,7 +9,7 @@ var Category    = require('../models/category'),
     
     
     
-//GET DATA FOR CATEGORY PAGE
+//GET DATA(CATEGORY OBJECT + ALL SUBCATEGORIES AND PRODUCTS ASSOCIATED TO IT) FOR CATEGORY PAGE
 async function getData(categoryName){
     try {
         let foundCategory = await Category.findOne({name: categoryName});

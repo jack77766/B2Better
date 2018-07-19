@@ -1,0 +1,16 @@
+<% include ../partials/header.ejs %>
+
+<form action='/<%=category%>/<%=sub_category%>/' method='POST'>
+    <h3>Add a new Product</h3>
+    <label>Name</label>
+    <input type='text' name='name'>
+    <label>Price</label></label>
+    <input type='number' name='price'>
+    <label>Description</label>
+    <input type='text' name='description'>
+    <button type='submit'>Submit</button>
+</form>
+
+
+
+<% include ../partials/footer.ejs %>

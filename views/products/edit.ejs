@@ -1,0 +1,22 @@
+<% include ../partials/header.ejs %>
+
+<form action='/<%=category%>/<%=sub_category%>/<%=product._id%>?_method=PUT' method='POST'>
+    <h3>Add a new Product</h3>
+    <label>Name</label>
+    <input type='text' name='name' placeholder='<%=product.name%>'>
+    <label>Price</label></label>
+    <input type='number' name='price' placeholder='<%=product.price%>'>
+    <label>Description</label>
+    <input type='text' name='description' placeholder='<%=product.description%>'>
+    <button type='submit'>Submit</button>
+</form>
+
+<h1>OR</h1>
+<h3>Delete it</h3>
+<form action='/<%=category%>/<%=sub_category%>/<%=product.id%>?_method=DELETE' method='POST'>
+    <button type='submit'>DELETE</button>
+</form>
+
+
+
+<% include ../partials/footer.ejs %>
