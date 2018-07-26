@@ -3,20 +3,23 @@ var express           = require('express'),
     app               = express(),
     mongoose          = require('mongoose'),
     methodOverride    = require('method-override'),
-    bodyParser        = require('body-parser');
+    bodyParser        = require('body-parser'),
+    passport          = require('passport'),
+    LocalStrategy     = require('passport-local')
     
     
 //REQUIRE ROUTES
 var adminRoutes       = require('./routes/admin'),
     categoryRoutes    = require('./routes/categories'),
     subCategoryRoutes = require('./routes/sub_categories'),
-    productRoutes     = require('./routes/products')
+    productRoutes     = require('./routes/products'),
+    indexRoutes       = require('./routes/index')
     
     
 //REQUIRE MODELS
 var Category          = require('./models/category'),
-    SubCategory       = require('./models/sub_category');
-    
+    SubCategory       = require('./models/sub_category'),
+    User              = require('./models/user');
     
 //DATABASE SETUP
 var DATABASEURL = (process.env.DATABASEURL || "mongodb://localhost/b2better");
@@ -35,6 +38,25 @@ app.set('view engine', 'ejs');
 
 
 
+app.use(require('express-session')({
+    secret:"WAKA WAKA",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+app.use(function(req,res,next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use(async function(req, res, next) {
   try {
     res.locals.allCats = await getAllCats();
@@ -50,6 +72,7 @@ app.use(async function(req, res, next) {
 
 //ACTIVATE ROUTES
 app.use(adminRoutes);
+app.use(indexRoutes);
 app.use(categoryRoutes);
 app.use(subCategoryRoutes);
 app.use(productRoutes);
