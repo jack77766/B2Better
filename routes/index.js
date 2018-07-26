@@ -14,19 +14,22 @@ router.get('/register', function(req, res) {
 //REGISTER USER MIDDLEWARE
 async function registerUser (req, res, next) {
   try {
-    var user = new User({ username:req.body.username });
+    var user = new User({ username:req.body.username.trim() });
     await User.register(user, req.body.password);
     return next();
-  } catch (e) {
-    return next(e);
+  } catch (err) {
+      req.flash('error', err.message)
+      res.redirect('/register')
   }
 }
 
 //REGISTER UER ROUTE
-router.post('/register', registerUser, 
-            passport.authenticate('local'), 
-                (req, res) => res.redirect('/') 
-)
+router.post('/register', registerUser, passport.authenticate('local'), (req, res,err) => 
+            {
+                    req.flash('success', "You registered successfully");
+                    res.redirect('/');
+            }
+);
 
 
 //LOGIN FORM ROUTE
@@ -37,7 +40,8 @@ router.get('/login', function(req, res) {
 //LOGIN USER ROUTE
 router.post('/login', passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: 'login'
+        failureRedirect: 'login',
+        failureFlash: true
 }));
 
 //LOGOUT USER ROUTE

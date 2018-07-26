@@ -50,6 +50,16 @@
     </div>
     <div class="three wide column mobile only"></div>
     <div class="ten wide column center aligned">
+        <% if(flashSuccess && flashSuccess.length > 0) { %>
+            <div class="ui success message">
+              <div class="header"><%=flashSuccess%></div>
+            </div>
+        <% } else if(flashError && flashError.length >0) { %>
+            <div class="ui negative message">
+              <div class="header"><%=flashError%></div>
+
+            </p></div>
+        <% } %>
       
 
           

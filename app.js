@@ -5,7 +5,8 @@ var express           = require('express'),
     methodOverride    = require('method-override'),
     bodyParser        = require('body-parser'),
     passport          = require('passport'),
-    LocalStrategy     = require('passport-local')
+    LocalStrategy     = require('passport-local'),
+    flash             = require('connect-flash')
     
     
 //REQUIRE ROUTES
@@ -35,6 +36,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
+app.use(flash());
 
 
 
@@ -52,12 +54,12 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-app.use(function(req,res,next) {
-  res.locals.currentUser = req.user;
-  next();
-});
+
 
 app.use(async function(req, res, next) {
+    res.locals.currentUser  = req.user;
+    res.locals.flashError   = req.flash('error');
+    res.locals.flashSuccess = req.flash('success');
   try {
     res.locals.allCats = await getAllCats();
     next();
