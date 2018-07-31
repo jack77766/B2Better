@@ -1,15 +1,24 @@
 <% include ./partials/header %>
 
-<h1>Please Login</h1>
+<h1 class='title-format'>Please Login</h1>
 
-<form action='login' method='POST'>
-    <label>Username</label>
-    <input type='text' name='username'>
-    <label>Password</label>
-    <input type='text' name='password'>
+
+<div class='login-form-container'>
     
-    <button type='submit'>Submit</button>
-</form>
-
+    <form class='ui form' action='login' method='POST'>
+        
+        <div class ='field required'>
+            <label>Username</label>
+            <input type='text' name='username'>
+        </div>
+        
+        <div class ='field required'>
+            <label>Password</label>
+            <input type='password' name='password'>
+        </div>
+        
+        <button class='ui button' type='submit'>Submit</button>
+    </form>
+</div>
 
 <% include ./partials/footer %>

@@ -1,21 +1,27 @@
 <% include ./partials/header.ejs %>
     
     <h1 class='title-format'><%= category %></h1>
+    
+    <hr>
+    
     <div class="ui equal width stackable center aligned grid">
         <% subCats.forEach(function(subCat) { %>
             <div class="column">
-                <a href='/<%=category%>/<%= subCat.name %>'><h2 class='inline'><%= subCat.name %></h2></a>
+                <a href='/<%=category%>/<%= subCat.name %>'><h2 class='inline subCat-header'><%= subCat.name %></h2></a>
             </div>
         <% }) %>
     </div>
+
+    <hr>
 
     <div class="ui stackable three column center aligned grid">
         <% products.forEach(function(product){ %>
             <div class="column">
                 <div class="ui card">
                       <div class="content">
-                         <div class="header"><a href='/<%=product.category.name%>/<%=product.sub_category.name%>/<%=product._id%>'>
-                                             <%= product.name %></a>
+                         <div class="header"><a class='product-header' 
+                                                href='/<%=product.category.name%>/<%=product.sub_category.name%>/<%=product._id%>'>
+                                                <%= product.name %></a>
                          </div>
                       </div>
                       <div class="content">$<%= product.price %></div>

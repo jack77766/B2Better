@@ -1,55 +1,54 @@
 <html >
     <head>
+        <script type='text/javascript' src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.js"></script>
+
         <link rel="stylesheet" type="text/css"  href="/stylesheets/app.css">
         <link rel="icon"       type="image/png" href="/images/favicon.ico">
+        <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Roboto+Condensed:400,700|Roboto:400,700|Work+Sans:400,700" rel="stylesheet">
+     
         <title>B2Better</title>
+        
     </head>
     
     <body>
         
-    <div class="ui grid">
-    
-    <div class="sixteen wide column">
-        <div class="ui inverted teal menu">
-          <div class="right menu">
-             <% if(!currentUser) { %>
-                  <a href='/register' class="ui item">Sign Up</a>
-                  <a href='/login'    class="ui item">Login</a>
-             <% } else { %>
-                  <a class='ui item'>Logged in as <%=currentUser.username%></a>
-                  <a href='/logout'   class="ui item">Logout</a>
-             <% } %>
-            
-            
-          </div>
-        </div>
-    </div> 
-    
-    
-  
-  <div class="three wide column">
-    <div class="ui left fixed vertical menu teal inverted">
+    <!--TOP NAV BAR-->
+    <div class="ui inverted teal menu">
+      <div class="right menu">
+         <% if(!currentUser) { %>
+              <a href='/register' class="ui item">Sign Up</a>
+              <a href='/login'    class="ui item">Login</a>
+         <% } else { %>
+              <a class='ui item'>Logged in as <%=currentUser.username%></a>
+              <a href='/logout'   class="ui item">Logout</a>
+         <% } %>
+      </div>
+    </div>
+
+
+    <!--SIDE NAV BAR-->
+    <div class="ui left fixed vertical menu teal inverted" id='sidenav'>
         <div class="header item"><a href='/'>B2Better</a></div>
         <%  for(var cat in allCats) { %>
-            <div class="item">
-                    <a class='header' href="/<%= cat %>" ><%= cat %></a>
-                    <div class="menu">
-                    <ul>
-                        <% for(var subCat in cat) { %>
-                            <% if(typeof allCats[cat][subCat] !== 'undefined') { %>
-                                <li><a class="item" href="/<%= cat %>/<%= allCats[cat][subCat] %>" ><%= allCats[cat][subCat] %></a></li>
-                            <% } %>
+            <div class="ui left dropdown pointing link item" ><%=cat%><i class="dropdown icon"></i>
+                <div class="menu">
+                    <% for(var subCat in cat) { %>
+                        <% if(typeof allCats[cat][subCat] !== 'undefined') { %>
+                            <a class="item d-item" href="/<%= cat %>/<%= allCats[cat][subCat] %>" ><%= allCats[cat][subCat] %></a>
                         <% } %>
-                    </ul>
-                    </div>
+                    <% } %>
+                    <a class='item d-item' href='/<%=cat%>'>ALL</a>
+                </div>
             </div>
         <% } %>
         <a class="item">About Us</a>
     </div>
-    </div>
-    <div class="three wide column mobile only"></div>
-    <div class="ten wide column center aligned">
+
+
+   <div class='container' id='mainViewArea'>
+       
         <% if(flashSuccess && flashSuccess.length > 0) { %>
             <div class="ui success message">
               <div class="header"><%=flashSuccess%></div>
@@ -57,8 +56,7 @@
         <% } else if(flashError && flashError.length >0) { %>
             <div class="ui negative message">
               <div class="header"><%=flashError%></div>
-
-            </p></div>
+            </div>
         <% } %>
       
 

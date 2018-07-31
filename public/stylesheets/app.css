@@ -1,9 +1,71 @@
 .title-format {
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     margin: 25px auto;
+    /*color: #424242;*/
+    color: #009688;
+    
+}
+
+.show {
+    margin: auto;
+    width: 50%;
+    float: none;
+}
+
+.show-row {
+    font-size: 1.5em;
+    color: #009688;
+
+    
+}
+.show img{
+    
+    height: 480px;
+    width:  480px;
+}
+
+
+
+.center-text {
+    text-align: center;
 }
 
 .ui.vertical.menu {
     max-width: 20%;
     min-width: 150px;
 }
+
+.login-form-container {
+    width: 50%;
+    margin: auto;
+}
+
+.d-item {
+    color: teal;
+}
+
+#sidenav {
+    min-width: 200px;
+}
+
+#mainViewArea {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.subCat-header {
+    color: #009688;
+}
+
+.product-header {
+    color: #009688;
+}
+
+
+/************FONTS***************
+font-family: 'Work Sans', sans-serif;
+font-family: 'Oxygen', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+**********************************/

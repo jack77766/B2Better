@@ -1,13 +1,22 @@
 <% include ../partials/header.ejs %>
 
-<div class='container'>
-        <div class="ui card">
-              <div class="content">
-                 <div class="header"><a><%= product.name %></a></div>
-              </div>
-              <div class="content">$<%= product.price %></div>
-              <div class='summary'><%= product.description %></div>
+
+<div class='show'>
+    <h1 class='product-header center-text' ><%= product.name %></h1>
+    <img src='https://images.unsplash.com/photo-1532795986-dbef1643a596?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ead221d8322f1dbf5470580fdc4c03d8&auto=format&fit=crop&w=667&q=80'>
+    <div class='ui grid'>
+        <div class='row show-row'>
+            <div class='thirteen wide column'>
+                <p><em><%= product.description %></em></p>
+            </div>
+            <div class='three wide columns'>
+                <h5>$<%= product.price %></h5>
+            </div>
         </div>
+    </div>
 </div>
+
+
+
 
 <% include ../partials/footer.ejs %>
