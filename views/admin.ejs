@@ -1,1 +1,53 @@
+<% include ./partials/header %>
+
+<script type='text/javascript'>
+     var myCats = <%- JSON.stringify(allCats) %>;
+     var someString = "<%= testString %>";
+</script>
+
+
 <h1>Admin Page</h1>
+
+<div>
+    <button class='ui teal button' href='/new'>Add a Category</button>
+</div>
+<hr>
+<div>
+    <form value ='catForm' method='POST' action='/admin/edit'>
+        <select name='category'>
+            <% for (var cat in allCats) { %>
+                <option value="<%=cat%>"><%=cat%></option>
+            <% } %>
+        </select>
+        <button id='categoryButton' type='submit' class='ui teal button'>Edit</button>
+    </form>
+</div>
+<hr>
+<div>
+    <button class='ui teal button' href='/category/new'>Add a Sub-Category</button>
+</div>
+<hr>
+<div>
+    <form value='subCatForm' method='POST' action='/admin/edit'>
+        <select name='category2' id='category2'>
+            <option>Please select a category</option>
+            <% for (var cat in allCats) { %>
+                <option value="<%=cat%>"><%=cat%></option>
+            <% } %>
+        </select>
+        
+        <select name='subCategory' id='subCategory'>
+            <option>Please select a category first.</option>
+        </select>
+        <button id='subCategoryButton'type='submit' class='ui teal button'>Edit</button>
+    </form>
+</div>
+
+
+
+
+<script type='text/javascript' src = "/scripts/admin.js"></script>
+
+
+
+<% include ./partials/footer %>

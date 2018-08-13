@@ -58,6 +58,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(async function(req, res, next) {
     res.locals.currentUser  = req.user;
+    res.locals.testString   = "This is a test String.";
+    res.locals.testObject   = {cat:'Mens', subCat: 'diapers'};
     res.locals.flashError   = req.flash('error');
     res.locals.flashSuccess = req.flash('success');
   try {
@@ -100,7 +102,8 @@ async function getAllCats(){
         let subCats = await SubCategory.find({},  '-_id name parent.name', {lean:true});
         let allCats = {};
         //Fill allCats with all categories & sub-categories
-        //in key:[value1, value2,...] form for easy processing in Views
+        //in key:[value1, value2,...]form where(key = the category and value = it's sub-categories) 
+        //for easy processing in Views
         for(const cat of cats) {
             allCats[cat.name] = new Array();
         }
