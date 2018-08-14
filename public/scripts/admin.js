@@ -1,30 +1,25 @@
-var categorySelector    = document.querySelector('#category2');
-var subCategorySelector = document.querySelector('#subCategory');
-var catButton           = document.querySelector('#categoryButton');
-var subCatButton        = document.querySelector('#subCategoryButton');
+var subcatCategorySelector     = document.querySelector('#category2');
+var subcatSubCategorySelector  = document.querySelector('#subCategory2');
+var productCategorySelector    = document.querySelector('#category3');
+var productSubCategorySelector = document.querySelector('#subCategory3');
 
-function updateSubs() {
+
+
+function updateSubs(cats, subcats) {
     
-    if(categorySelector.value) {
-        var currentCategory = categorySelector.value;
-        for(var i = subCategorySelector.options.length - 1 ; i >= 0 ; i--) {
-            subCategorySelector.remove(i);
+    if(cats.value) {
+        var currentCategory = cats.value;
+        for(var i = subcats.options.length - 1 ; i >= 0 ; i--) {
+            subcats.remove(i);
         }
-        subCategorySelector.options[0] = new Option("Please select a subCategory");
+        subcats.options[0] = new Option("Please select a subCategory");
         for(var subCat of myCats[currentCategory]) {
-             subCategorySelector.options[subCategorySelector.options.length] = new Option(subCat, subCat);
+             subcats.options[subcats.options.length] = new Option(subCat, subCat);
         }
     }
     
 }
 
-categorySelector.addEventListener('change', updateSubs);
-//Make the button that wasn't clicked null so when can tell 
-//which button was pressed at route
-catButton.addEventListener('onClick', function() {
-    subCategorySelector = null;
-});
-subCatButton.addEventListener('onClick', function() {
-    categorySelector = null;
-});
+subcatCategorySelector.addEventListener('change', function() { updateSubs(subcatCategorySelector, subcatSubCategorySelector)});
+productCategorySelector.addEventListener('change', function() { updateSubs(productCategorySelector, productSubCategorySelector)});
 

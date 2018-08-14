@@ -10,8 +10,11 @@ router.post('/admin/edit', function(req,res) {
     if(req.body.category) {
        res.redirect('/'+ req.body.category +'/edit');
     }
+    else if(req.body.category2) {
+        res.redirect('/'+ req.body.category2 + '/' + req.body.subCategory2 + '/edit');
+    }
     else {
-        res.redirect('/'+ req.body.category2 + '/' + req.body.subCategory + '/edit');
+        res.redirect('/'+ req.body.category3 + '/' + req.body.subCategory3 + '/new');
     }
 });
 

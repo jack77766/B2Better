@@ -4,6 +4,25 @@
     margin: 25px auto;
     color: #424242;
 }
+hr { 
+    background: url('https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/390e4bb2-af13-4aaf-a2d9-660e2358177b/hr-manasa-malipeddi-04.jpg') no-repeat top center;
+    background-size: contain;
+    display: block;
+    height: 18px;
+    border: 0;
+    position: relative;
+    
+}
+.hr2 {
+   /*background: url('https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/864ee4b5-4ad2-4ea2-88af-4796493dc806/hr-wojciech-slowacki-01.jpg') no-repeat top center;*/
+   background-repeat: repeat-x;
+   /*background-size: 280px 40px;*/
+}
+
+/*.hr3 {*/
+/*    height: 25px;*/
+/*    width:  600px;*/
+/*}*/
 
 .show {
     margin: auto;

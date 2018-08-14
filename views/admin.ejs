@@ -8,11 +8,6 @@
 
 <h1 class='center aligned ui header'>Admin Page</h1>
 
-<!--<div class='ui segment'>-->
-<!--    <h4 class='ui left floated header'>Add a new Category</h4>-->
-<!--    <a class='ui teal button small' href='/new'>Add</a>-->
-<!--</div>-->
-
 <div class='ui segment'>
     <h3 class="ui header">Add a new category</h3>
       <a class='ui teal button small' href='/new'>Add</a>
@@ -45,10 +40,27 @@
             <% } %>
         </select>
         
-        <select class ='ui dropdown' name='subCategory' id='subCategory'>
+        <select class ='ui dropdown' name='subCategory2' id='subCategory2'>
             <option>Please select a category first.</option>
         </select>
         <button id='subCategoryButton'type='submit' class='ui teal button'>Edit</button>
+    </form>
+</div>
+
+<div class='ui segment'>
+    <h3 class='ui header'>Add a new product</h3>
+    <form value='productForm' method='POST' action='/admin/edit'>
+        <select class ='ui dropdown' name='category3' id='category3'>
+            <option>Please select a category</option>
+            <% for (var cat in allCats) { %>
+                <option value="<%=cat%>"><%=cat%></option>
+            <% } %>
+        </select>
+        
+        <select class ='ui dropdown' name='subCategory3' id='subCategory3'>
+            <option>Please select a category first.</option>
+        </select>
+        <button id='productButton'type='submit' class='ui teal button'>Add</button>
     </form>
 </div>
 
