@@ -19,6 +19,8 @@ function updateSubs() {
 }
 
 categorySelector.addEventListener('change', updateSubs);
+//Make the button that wasn't clicked null so when can tell 
+//which button was pressed at route
 catButton.addEventListener('onClick', function() {
     subCategorySelector = null;
 });

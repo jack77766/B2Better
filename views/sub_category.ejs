@@ -1,9 +1,23 @@
 <% include ./partials/header.ejs %>
 
+    <!--<div class="ui large breadcrumb">-->
+    <!--  <a class="section">Home</a>-->
+    <!--  <div class="divider"> / </div>-->
+    <!--  <a class="section"><%=category%></a>-->
+    <!--  <div class="divider"> / </div>-->
+    <!--  <div class="active section"><%=sub_category%></div>-->
+    <!--</div>-->
+    
+    <h2 class='subCat-header'><%=sub_category%></h2>
+    <hr>
+
 <div class="ui stackable three column center aligned grid">
         <% products.forEach(function(product){ %>
             <div class="column">
                 <div class="ui card">
+                      <div class='image'>
+                          <img src='https://images.unsplash.com/photo-1453834190665-46ff0a1fbd5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=02d4a80ebaeb7a0a16734e34fe1aef58&auto=format&fit=crop&w=1355&q=80'>
+                      </div>
                       <div class="content">
                          <div class="header">
                              <a class='product-header' 

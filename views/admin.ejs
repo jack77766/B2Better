@@ -6,15 +6,22 @@
 </script>
 
 
-<h1>Admin Page</h1>
+<h1 class='center aligned ui header'>Admin Page</h1>
 
-<div>
-    <button class='ui teal button' href='/new'>Add a Category</button>
+<!--<div class='ui segment'>-->
+<!--    <h4 class='ui left floated header'>Add a new Category</h4>-->
+<!--    <a class='ui teal button small' href='/new'>Add</a>-->
+<!--</div>-->
+
+<div class='ui segment'>
+    <h3 class="ui header">Add a new category</h3>
+      <a class='ui teal button small' href='/new'>Add</a>
 </div>
-<hr>
-<div>
+
+<div class='ui segment'>
+    <h3 class="ui header">Edit or delete a category</h3>
     <form value ='catForm' method='POST' action='/admin/edit'>
-        <select name='category'>
+        <select class ='ui dropdown' name='category'>
             <% for (var cat in allCats) { %>
                 <option value="<%=cat%>"><%=cat%></option>
             <% } %>
@@ -22,21 +29,23 @@
         <button id='categoryButton' type='submit' class='ui teal button'>Edit</button>
     </form>
 </div>
-<hr>
-<div>
-    <button class='ui teal button' href='/category/new'>Add a Sub-Category</button>
+
+<div class='ui segment'>
+    <h3 class'ui header'>Add a new Sub-Category</h3>
+    <a class='ui teal button small' href='/category/new'>Add</a>
 </div>
-<hr>
-<div>
+
+<div class='ui segment'>
+    <h3 class="ui header">Edit or delete a sub-category</h3> 
     <form value='subCatForm' method='POST' action='/admin/edit'>
-        <select name='category2' id='category2'>
+        <select class ='ui dropdown' name='category2' id='category2'>
             <option>Please select a category</option>
             <% for (var cat in allCats) { %>
                 <option value="<%=cat%>"><%=cat%></option>
             <% } %>
         </select>
         
-        <select name='subCategory' id='subCategory'>
+        <select class ='ui dropdown' name='subCategory' id='subCategory'>
             <option>Please select a category first.</option>
         </select>
         <button id='subCategoryButton'type='submit' class='ui teal button'>Edit</button>

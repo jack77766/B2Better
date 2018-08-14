@@ -2,9 +2,7 @@
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin: 25px auto;
-    /*color: #424242;*/
-    color: #009688;
-    
+    color: #424242;
 }
 
 .show {
@@ -13,12 +11,13 @@
     float: none;
 }
 
-.show-row {
-    font-size: 1.5em;
-    color: #009688;
 
-    
+.show-row {
+    margin-top: 10px;
+    font-size: 1.5em;
+    text-align: center;
 }
+
 .show img{
     
     height: 480px;
@@ -55,7 +54,9 @@
 }
 
 .subCat-header {
-    color: #009688;
+    /*color: #616161;*/
+    color: #424242;
+    text-align: center;
 }
 
 .product-header {
