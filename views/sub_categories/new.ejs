@@ -1,13 +1,17 @@
 <% include ../partials/header.ejs %>
 
-<h1>Add a new sub-category</h1>
 
-<form action='/<%= category %>/' method='POST'>
-    <label>Add a new Sub-Category</label>
-    <input type='text' name='sub_category'>
-    <button type='submit'>Submit</button>
-</form>
+<h1 class='ui header centered'>Add a sub-category</h1>
 
+<div class='ui segment'>
+    <form class='ui form' action='/' method='POST'>
+        <div class='required field'>
+            <label>New sub-category name</label>
+            <input type='text' name='category' required>
+        </div>
+        <button class='ui button teal' type='submit'>Submit</button>
+    </form>
+</div>
 
 
 <% include ../partials/footer.ejs %>

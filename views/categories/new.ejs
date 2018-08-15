@@ -1,11 +1,17 @@
 <% include ../partials/header.ejs %>
 
-<form action='/' method='POST'>
-    <label>Add a new Category</label>
-    <input type='text' name='category'>
-    <button type='submit'>Submit</button>
-</form>
 
+<h1 class='ui header centered'>Add a category</h1>
+
+<div class='ui segment'>
+    <form class='ui form' action='/' method='POST'>
+        <div class='required field'>
+            <label>New category name</label>
+            <input type='text' name='category' required>
+        </div>
+        <button class='ui button teal' type='submit'>Submit</button>
+    </form>
+</div>
 
 
 <% include ../partials/footer.ejs %>

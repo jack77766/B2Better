@@ -44,7 +44,6 @@ hr {
 }
 
 
-
 .center-text {
     text-align: center;
 }
@@ -54,9 +53,9 @@ hr {
     min-width: 150px;
 }
 
-.login-form-container {
+.form-container {
     width: 50%;
-    margin: auto;
+    margin: 25px auto;
 }
 
 .d-item {

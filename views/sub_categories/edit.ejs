@@ -1,16 +1,27 @@
 <% include ../partials/header.ejs %>
 
-<h1>Welcome to the edit sub-category page!!!</h1>
+<h1 class='ui header centered'>Edit sub-category</h1>
 
-<form action='/<%= category %>/<%= sub_category %>?_method=PUT' method='POST'>
-    <label>Change sub-category <%= sub_category %> to:</label>
-    <input type='text' name='sub_category'>
-    <button type='submit'>Submit</button>
-</form>
-<h1>OR</h1>
-<h3>Delete it</h3>
-<form action='/<%=category%>/<%=sub_category%>?_method=DELETE' method='POST'>
-    <button type='submit'>DELETE</button>
-</form>
+<div class='ui segments'>
+    <div class='ui segment'>
+        <form class='ui form' action='/<%= category %>/<%= sub_category %>?_method=PUT' method='POST'>
+            <div class='required field'>
+                <label>Change sub-category <%= sub_category %> to:</label>
+                <input type='text' name='sub-category' required>
+            </div>
+            <button class='ui button tiny teal' type='submit'>Submit</button>
+        </form>
+    </div>
+    <div class='ui segment'>
+        <form class='ui form' action='/<%=category%>/<%=sub_category%>?_method=DELETE' method='POST'>
+            <div class='field'>
+                <label>Delete sub-ategory</label>
+                <button class='ui button danger red tiny' type='submit'>DELETE</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 
 <% include ../partials/footer.ejs %>

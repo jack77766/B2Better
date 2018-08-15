@@ -1,16 +1,25 @@
 <% include ../partials/header.ejs %>
 
-<form action='/<%=category%>/<%=sub_category%>/' method='POST'>
-    <h3>Add a new Product</h3>
-    <label>Name</label>
-    <input type='text' name='name'>
-    <label>Price</label></label>
-    <input type='number' name='price'>
-    <label>Description</label>
-    <input type='text' name='description'>
-    <button type='submit'>Submit</button>
-</form>
 
+<h2 class='ui header centered'>Add a new Product</h2>
+
+<div class='ui segment'>
+    <form class='ui form' action='/<%=category%>/<%=sub_category%>/' method='POST'>
+        <div class='field required'>
+            <label>Name</label>
+            <input type='text' name='name' required>
+        </div>
+        <div class='field'>
+            <label>Price</label></label>
+            <input type='number' name='price'>
+        </div>
+        <div class='field'>
+            <label>Description</label>
+            <input type='text' name='description'>
+        </div>
+        <button class='ui button teal' type='submit'>Submit</button>
+    </form>
+</div>
 
 
 <% include ../partials/footer.ejs %>
