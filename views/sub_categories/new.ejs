@@ -4,10 +4,10 @@
 <h1 class='ui header centered'>Add a sub-category</h1>
 
 <div class='ui segment'>
-    <form class='ui form' action='/' method='POST'>
+    <form class='ui form' action='/<%=category%>' method='POST'>
         <div class='required field'>
             <label>New sub-category name</label>
-            <input type='text' name='category' required>
+            <input type='text' name='sub_category' required>
         </div>
         <button class='ui button teal' type='submit'>Submit</button>
     </form>

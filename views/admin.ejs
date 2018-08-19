@@ -27,7 +27,14 @@
 
 <div class='ui segment'>
     <h3 class'ui header'>Add a new Sub-Category</h3>
-    <a class='ui teal button small' href='/category/new'>Add</a>
+    <form value ='subcatAddForm' method='POST' action='/admin/edit'>
+        <select class ='ui dropdown' name='subcatCategory'>
+            <% for (var cat in allCats) { %>
+                <option value="<%=cat%>"><%=cat%></option>
+            <% } %>
+        </select>
+        <button id='subcatAddButton' type='submit' class='ui teal button'>Add</button>
+    </form>
 </div>
 
 <div class='ui segment'>
