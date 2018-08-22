@@ -1,25 +1,22 @@
 <% include ./partials/header %>
 
+
 <h1 class='title-format'>Please Sign-Up</h1>
 
-<div class='login-form-container'>
-    
+<div class='form-container'>
     <form class='ui form' action='register' method='POST'>
-        
-        <div class = 'field required'>
+        <div class='field required'>
             <label>Username</label>
             <input type='text' name='username'>
         </div>
         
-        <div class = 'field required'>
+        <div class='field required'>
             <label>Password</label>
             <input type='password' name='password'>
         </div>
         
         <button class='ui button teal' type='submit'>Submit</button>
-        
     </form>
 </div>
-
 
 <% include ./partials/footer %>

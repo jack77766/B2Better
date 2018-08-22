@@ -2,7 +2,41 @@ var express  = require('express'),
     router   = express.Router(),
     passport = require('passport')
     
-var User     = require('../models/user')
+var User     = require('../models/user'),
+    Products = require('../models/product'),
+    Cart     = require('../models/cart')
+
+//VIEW CART ROUTE
+router.get('/cart', function(req,res) {
+    var mySession = JSON.stringify(req.session);
+    var myCart = req.session.cart;
+    if(!myCart) {
+        myCart = new Cart();
+    }
+    res.render('cart', {cart:myCart});
+});
+
+//ADD TO CART ROUTE
+router.get('/cart/:id', function(req,res) {
+    var productId = req.params.id;
+    Products.findById(productId, function(err, foundProduct) {
+        if(err){
+            console.log("Could not find product to add to cart")
+            res.redirect('back');
+        }
+        else {
+            var mySession = JSON.stringify(req.session);
+            var myCart = req.session.cart;
+            if(!myCart) {
+                myCart = new Cart();
+            }
+            myCart = Cart.add(myCart, foundProduct, productId);
+            req.session.cart = myCart;
+            console.log(myCart);
+            res.redirect('/cart');
+        }
+    })
+});
     
     
 //REGISTER FORM
@@ -28,7 +62,7 @@ router.post('/register', registerUser, passport.authenticate('local'), (req, res
             {
                     req.flash('success', "You registered successfully");
                     res.redirect('/');
-            }
+            },
 );
 
 

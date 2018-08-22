@@ -4,8 +4,13 @@
 <div class='show'>
     <h1 class='subCat-header center-text' ><%= product.name %></h1>
     <hr>
-    <img class='ui centered rounded large image' src='/images/present.jpg'>
-    <div class='ui grid'>
+    
+    <div class='ui centered grid'>
+        <div class='row show-row'>
+            <div class='sixteen wide column'>
+                <img class='ui centered rounded big image' src='/images/present.jpg'>
+            </div>
+        </div>
         <div class='row show-row'>
             <div class='thirteen wide column'>
                 <p><%= product.description %></p>
@@ -14,6 +19,9 @@
                 <label class='ui tag label large teal'>$<%= product.price %></label>
                 
             </div>
+        </div>
+        <div class='row show-row'>
+            <a class='ui button teal' href='/cart/<%=product.id%>'>Add</a>
         </div>
     </div>
 </div>

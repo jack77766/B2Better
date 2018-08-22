@@ -4,9 +4,11 @@ var express           = require('express'),
     mongoose          = require('mongoose'),
     methodOverride    = require('method-override'),
     bodyParser        = require('body-parser'),
+    session           = require('express-session'),
     passport          = require('passport'),
     LocalStrategy     = require('passport-local'),
-    flash             = require('connect-flash')
+    flash             = require('connect-flash'),
+    MongoStore        = require('connect-mongo')(session)
     
     
 //REQUIRE ROUTES
@@ -20,7 +22,8 @@ var adminRoutes       = require('./routes/admin'),
 //REQUIRE MODELS
 var Category          = require('./models/category'),
     SubCategory       = require('./models/sub_category'),
-    User              = require('./models/user');
+    User              = require('./models/user'),
+    Cart              = require('./models/cart')
     
 //DATABASE SETUP
 var DATABASEURL = (process.env.DATABASEURL || "mongodb://localhost/b2better");
@@ -40,10 +43,12 @@ app.use(flash());
 
 
 
-app.use(require('express-session')({
+app.use(session({
     secret:"WAKA WAKA",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({mongooseConnection: mongoose.connection}),
+    cookie: {maxAge: 180 * 60 *1000}
 }));
 
 app.use(passport.initialize());
@@ -62,6 +67,7 @@ app.use(async function(req, res, next) {
     res.locals.testObject   = {cat:'Mens', subCat: 'diapers'};
     res.locals.flashError   = req.flash('error');
     res.locals.flashSuccess = req.flash('success');
+    res.locals.session      = req.session;
   try {
     res.locals.allCats = await getAllCats();
     next();
@@ -84,6 +90,10 @@ app.use(productRoutes);
 
 
 app.get('/', function(req, res) {
+    // if((!req.session.cart) && (req.isAuthenticated())) {
+    //     req.session.cart = new Cart();
+    //     console.log("Cart created");
+    // }
    res.render('home'); 
 });
 

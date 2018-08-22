@@ -11,6 +11,8 @@ hr {
     height: 18px;
     border: 0;
     position: relative;
+    margin-top: 0px;
+    margin-bottom: 30px;
     
 }
 .hr2 {
@@ -19,20 +21,21 @@ hr {
    /*background-size: 280px 40px;*/
 }
 
-/*.hr3 {*/
-/*    height: 25px;*/
-/*    width:  600px;*/
-/*}*/
 
 .show {
     margin: auto;
     width: 50%;
     float: none;
 }
+.table-container {
+    max-width: 80%;
+    margin: 40px auto;
+}
 
 
 .show-row {
     margin-top: 10px;
+    max-width: 600px;
     font-size: 1.5em;
     text-align: center;
 }
@@ -54,8 +57,8 @@ hr {
 }
 
 .form-container {
-    width: 50%;
-    margin: 25px auto;
+    max-width: 450px;
+    margin: 40px auto;
 }
 
 .d-item {
@@ -75,6 +78,7 @@ hr {
     /*color: #616161;*/
     color: #424242;
     text-align: center;
+    margin-bottom: 0px;
 }
 
 .product-header {

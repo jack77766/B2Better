@@ -12,7 +12,7 @@ function updateSubs(cats, subcats) {
         for(var i = subcats.options.length - 1 ; i >= 0 ; i--) {
             subcats.remove(i);
         }
-        subcats.options[0] = new Option("Please select a subCategory");
+        subcats.options[0] = new Option("sub-category");
         for(var subCat of myCats[currentCategory]) {
              subcats.options[subcats.options.length] = new Option(subCat, subCat);
         }

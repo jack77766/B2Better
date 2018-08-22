@@ -1,0 +1,32 @@
+<% include ./partials/header.ejs %>
+
+<div class='table-container'>
+    <table class='ui inverted teal unstackable table'>
+    <% var items = cart.items %>
+    <thead>
+        <tr>
+            <th class="ten wide">Item</th>
+            <th class="three wide">Qty</th>
+            <th class="three wide">Price</th>
+        </tr>
+    </thead>
+    <% for(var item in items) { %>
+        <tr>
+            <td><%=items[item].item.name%></td>
+            <td><%=items[item].qty%></td>
+            <td><%=items[item].price%></td>
+        </tr>
+    <% } %>
+    <tfoot>
+        <tr>
+            <th>Total:</th>
+            <th></th>
+            <th><%=cart.totalPrice%></th>
+      </tr>
+    </tfoot>
+</div>
+
+
+
+<% include ./partials/footer.ejs %>
+
