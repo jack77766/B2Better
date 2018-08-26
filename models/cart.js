@@ -20,6 +20,36 @@ module.exports = class Cart {
         return cart;
     }
     
+    static remove(cart, id) {
+        cart.totalItems -= cart.items[id].qty;
+        cart.totalPrice -= cart.items[id].price;
+        delete cart.items[id];
+        return cart;
+    }
+    
+    static increase(cart, item, id) {
+        cart.items[id].qty++;
+        cart.items[id].price += item.price;
+        cart.totalItems++;
+        cart.totalPrice += item.price;
+        return cart;
+    }
+    
+    static decrease(cart, item, id) {
+        if(cart.items[id].qty == 1) {
+            delete cart.items[id];
+        }
+        else {
+            cart.items[id].qty--;
+            cart.items[id].price -= item.price;
+        }
+        cart.totalItems--;
+        cart.totalPrice -= item.price;
+        return cart;
+    }
+    
+    
+    
     generateArray() {
         var myArray = [];
         for(var id in this.items) {

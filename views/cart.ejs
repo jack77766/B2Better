@@ -5,9 +5,12 @@
     <% var items = cart.items %>
     <thead>
         <tr>
-            <th class="ten wide">Item</th>
-            <th class="three wide">Qty</th>
-            <th class="three wide">Price</th>
+            <th class="nine wide">Item</th>
+            <th class="two wide">Qty</th>
+            <th class="two wide">Price</th>
+            <th class="one wide"></th>
+            <th class="one wide"></th>
+            <th class="one wide"></th>
         </tr>
     </thead>
     <% for(var item in items) { %>
@@ -15,6 +18,21 @@
             <td><%=items[item].item.name%></td>
             <td><%=items[item].qty%></td>
             <td><%=items[item].price%></td>
+             <td>
+                <form action='/cart/<%=item%>/decrease?_method=PUT' method='POST'>
+                    <button type='submit'><i class="minus icon teal"></i></button>
+                </form>
+            </td>
+             <td>
+                <form action='/cart/<%=item%>/increase?_method=PUT' method='POST'>
+                    <button type='submit'><i class="plus icon teal"></i></button>
+                </form>
+            </td>
+            <td>
+                <form action='/cart/<%=item%>?_method=DELETE' method='POST'>
+                    <button type='submit'><i class="trash alternate outline icon teal"></i></button>
+                </form>
+            </td>
         </tr>
     <% } %>
     <tfoot>
@@ -22,6 +40,9 @@
             <th>Total:</th>
             <th></th>
             <th><%=cart.totalPrice%></th>
+            <th></th>
+            <th></th>
+            <th></th>
       </tr>
     </tfoot>
 </div>

@@ -32,10 +32,48 @@ router.get('/cart/:id', function(req,res) {
             }
             myCart = Cart.add(myCart, foundProduct, productId);
             req.session.cart = myCart;
-            console.log(myCart);
             res.redirect('/cart');
         }
     })
+});
+
+//REMOVE FROM CART ROUTE
+router.delete('/cart/:id', function(req, res) {
+     var productId = req.params.id;
+     Products.findById(productId, function(err) {
+        if(err){
+            console.log("Could not find product to add to cart")
+            res.redirect('back');
+        }
+        else {
+            var myCart = req.session.cart;
+            myCart = Cart.remove(myCart, productId);
+            req.session.cart = myCart;
+            res.redirect('/cart');
+        }
+     });
+});
+
+//UPDATE QUANTITY
+router.put('/cart/:id/:action', function(req, res) {
+    var productId = req.params.id;
+     Products.findById(productId, function(err, foundProduct) {
+        if(err){
+            console.log("Could not find product to add to cart")
+            res.redirect('back');
+        }
+        else {
+            var myCart = req.session.cart;
+            if(req.params.action == 'increase') {
+                myCart = Cart.increase(myCart,foundProduct, productId);
+            }
+            else if(req.params.action == 'decrease') {
+                myCart = Cart.decrease(myCart,foundProduct, productId);
+            }
+            req.session.cart = myCart;
+            res.redirect('/cart');
+        }
+     });
 });
     
     
