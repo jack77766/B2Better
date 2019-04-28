@@ -8,7 +8,8 @@ var express           = require('express'),
     passport          = require('passport'),
     LocalStrategy     = require('passport-local'),
     flash             = require('connect-flash'),
-    MongoStore        = require('connect-mongo')(session)
+    MongoStore        = require('connect-mongo')(session),
+    dotenv            = require('dotenv').config()
     
     
 //REQUIRE ROUTES
