@@ -6,32 +6,35 @@
     
     <hr>
     
-    <div class="ui equal width stackable center aligned grid">
+    <!-- <div class="ui equal width stackable center aligned grid">
         <% subCats.forEach(function(subCat) { %>
             <div class="column">
                 <a href='/<%=category%>/<%= subCat.name %>'><h2 class='inline subCat-header'><%= subCat.name %></h2></a>
             </div>
         <% }) %>
-    </div>
+    </div> -->
 
-    <hr class='hr2'>
+    <!-- <hr class='hr2'> -->
     
     <div class="ui stackable three column center aligned grid">
         <% products.forEach(function(product){ %>
             <div class="column">
                 <div class="ui card">
-                      <div class='image'>
+                      <div class='image tag-inside'>
                           <img src='/images/present.jpg'>
+                          <label class=' ui tag label teal tiny position-tag'>$<%= product.price %></label>
                       </div>
                       <div class="content">
-                         <div class="header"><a class='product-header' 
-                                                href='/<%=product.category.name%>/<%=product.sub_category.name%>/<%=product._id%>'>
-                                                <%= product.name %></a>
+                         <div class="header ">
+                            <a class='product-header' 
+                                href='/<%=product.category.name%>/<%=product.sub_category.name%>/<%=product._id%>'>
+                                <%= product.name %></a>
+                            
                          </div>
                       </div>
                       <div class='content'>
                           <div class='summary'><%= product.description %></div>
-                          <label class='ui tag label teal tiny'>$<%= product.price %></label>
+                          
                       </div>
                 </div>
             </div>
