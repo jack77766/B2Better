@@ -47,8 +47,9 @@ hr {
 }
 
 .product-grid {
-    background-color: rgb(240, 240, 240);
-    border-radius: 5px;
+    /* background-color: rgb(240, 240, 240); */
+    border-radius: 10px;
+    border: 1.35px solid lightgray;
 }
 .show-row {
     margin-top: 10px;
