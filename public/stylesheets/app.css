@@ -13,6 +13,42 @@
     padding: 3em 5em;
 }
 
+.cart-title {
+    text-align: center;
+    margin: 0 0 1em 0;
+
+    color: rgb(120,120,120);
+}
+.cart-header-row th{
+    color: white!important;
+    background-color: #00b5acb2!important;
+}
+.table-row td{
+    color: #00b5ac!important;
+}
+.footer-row th {
+    background-color: #00b5acb2!important;
+    color: white!important;
+}
+
+.cart-button {
+    border: none;
+    background-color: #00b5acb2!important;
+    padding: 6px;
+    border-radius: 50%;
+}
+.cart-button:hover {
+    cursor: pointer;
+    background-color: #068d86d5!important;
+}
+
+.cart-icon {
+    margin: 0!important;
+    color: white;
+    font-size: 0.85rem!important;
+}
+
+
 hr { 
     background: url('https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/390e4bb2-af13-4aaf-a2d9-660e2358177b/hr-manasa-malipeddi-04.jpg') no-repeat top center;
     background-size: contain;

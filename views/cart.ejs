@@ -1,10 +1,11 @@
 <% include ./partials/header.ejs %>
 
 <div class='table-container'>
-    <table class='ui inverted teal unstackable table'>
+    <h1 class='cart-title'>Your Cart</h1>
+    <table class='ui unstackable table'>
     <% var items = cart.items %>
     <thead>
-        <tr>
+        <tr class='cart-header-row'>
             <th class="nine wide">Item</th>
             <th class="two wide">Qty</th>
             <th class="two wide">Price</th>
@@ -14,32 +15,32 @@
         </tr>
     </thead>
     <% for(var item in items) { %>
-        <tr>
+        <tr class='table-row'>
             <td><%=items[item].item.name%></td>
             <td><%=items[item].qty%></td>
-            <td><%=items[item].price%></td>
+            <td>$<%=items[item].price%></td>
              <td>
                 <form action='/cart/<%=item%>/decrease?_method=PUT' method='POST'>
-                    <button type='submit'><i class="minus icon teal"></i></button>
+                    <button type='submit' class='cart-button'><i class="minus icon cart-icon"></i></button>
                 </form>
             </td>
              <td>
                 <form action='/cart/<%=item%>/increase?_method=PUT' method='POST'>
-                    <button type='submit'><i class="plus icon teal"></i></button>
+                    <button type='submit' class='cart-button'><i class="plus icon cart-icon"></i></button>
                 </form>
             </td>
             <td>
                 <form action='/cart/<%=item%>?_method=DELETE' method='POST'>
-                    <button type='submit'><i class="trash alternate outline icon teal"></i></button>
+                    <button type='submit' class='cart-button'><i class="trash alternate outline icon cart-icon"></i></button>
                 </form>
             </td>
         </tr>
     <% } %>
     <tfoot>
-        <tr>
-            <th>Total:</th>
+        <tr class="footer-row">
+            <th><strong>Total:</strong></th>
             <th></th>
-            <th><%=cart.totalPrice%></th>
+            <th><strong>$<%=cart.totalPrice%></strong></th>
             <th></th>
             <th></th>
             <th></th>
