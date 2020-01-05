@@ -5,18 +5,19 @@
     <h1 class='subCat-header center-text' ><%= product.name %></h1>
     <hr>
     
-    <div class='ui centered grid'>
-        <div class='row show-row'>
-            <div class='sixteen wide column'>
+    <div class='ui centered grid product-grid '>
+        <div class='show-image'>
+            <div class='sixteen wide column tag-inside'>
                 <img class='ui centered rounded big image' src='/images/present.jpg'>
+                <label class='ui tag label large teal product-tag'>$<%= product.price %></label>
             </div>
         </div>
         <div class='row show-row'>
-            <div class='thirteen wide column'>
+            <div class='thirteen wide column product-text'>
                 <p><%= product.description %></p>
             </div>
             <div class='three wide column'>
-                <label class='ui tag label large teal'>$<%= product.price %></label>
+                
                 
             </div>
         </div>

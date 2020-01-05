@@ -15,8 +15,9 @@
         <% products.forEach(function(product){ %>
             <div class="column">
                 <div class="ui card">
-                      <div class='image'>
+                      <div class='image tag-inside'>
                           <img src='/images/present.jpg'>
+                          <label class='ui tag label teal tiny position-tag'>$<%= product.price %></label>
                       </div>
                       <div class="content">
                          <div class="header">
@@ -27,7 +28,7 @@
                       </div>
                       <div class='content'>
                           <div class='summary'><%= product.description %></div>
-                          <label class='ui tag label teal tiny'>$<%= product.price %></label>
+                          
                       </div>
                 </div>
             </div>

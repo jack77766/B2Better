@@ -3,7 +3,52 @@
     text-align: center;
     margin: 25px auto;
     color: #424242;
+
 }
+
+.home-text {
+    font-size: 1.5rem;
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 3em 5em;
+}
+
+.cart-title {
+    text-align: center;
+    margin: 0 0 1em 0;
+
+    color: rgb(120,120,120);
+}
+.cart-header-row th{
+    color: white!important;
+    background-color: #00b5acb2!important;
+}
+.table-row td{
+    color: #00b5ac!important;
+}
+.footer-row th {
+    background-color: #00b5acb2!important;
+    color: white!important;
+}
+
+.cart-button {
+    border: none;
+    background-color: #00b5acb2!important;
+    padding: 6px;
+    border-radius: 50%;
+}
+.cart-button:hover {
+    cursor: pointer;
+    background-color: #068d86d5!important;
+}
+
+.cart-icon {
+    margin: 0!important;
+    color: white;
+    font-size: 0.85rem!important;
+}
+
+
 hr { 
     background: url('https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/390e4bb2-af13-4aaf-a2d9-660e2358177b/hr-manasa-malipeddi-04.jpg') no-repeat top center;
     background-size: contain;
@@ -12,12 +57,12 @@ hr {
     border: 0;
     position: relative;
     margin-top: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 75px;
     
 }
 .hr2 {
    /*background: url('https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/864ee4b5-4ad2-4ea2-88af-4796493dc806/hr-wojciech-slowacki-01.jpg') no-repeat top center;*/
-   background-repeat: repeat-x;
+   background: none;
    /*background-size: 280px 40px;*/
 }
 
@@ -32,7 +77,16 @@ hr {
     margin: 40px auto;
 }
 
+.show-image {
+    max-width: 600px;
+    padding: 0!important;
+}
 
+.product-grid {
+    /* background-color: rgb(240, 240, 240); */
+    border-radius: 10px;
+    border: 1.35px solid lightgray;
+}
 .show-row {
     margin-top: 10px;
     max-width: 600px;
@@ -84,6 +138,35 @@ hr {
 .product-header {
     color: #009688;
 }
+
+.tag-inside {
+    position: relative;
+}
+.position-tag {
+    right: -30px;
+    top: 180px;
+    transform: rotate(25deg);
+}
+.product-tag {
+    right: -30px;
+    top: 300px;
+    transform: rotate(25deg);
+}
+.ui.tag.label {
+    position: absolute;
+    z-index: 1;
+}
+
+.product-text {
+    width: 100%;
+}
+.product-text p {
+    text-align: center;
+}
+.ui.grid>.row>[class*="thirteen wide"].column {
+    width: 100%!important;
+}
+
 
 
 /************FONTS***************
